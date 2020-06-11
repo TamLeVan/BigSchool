@@ -17,6 +17,7 @@ namespace BigSchool_1.Controllers
         public AttendancesController()
         {
             _dbContext = new ApplicationDbContext();
+            //Test commit
         }
 
         [HttpPost]
