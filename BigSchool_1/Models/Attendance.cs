@@ -9,7 +9,7 @@ namespace BigSchool_1.Models
 {
     public class Attendance
     {
-        public Course Course { get; set; }
+        public Course Course { get; set; } 
 
         [Key]
         [Column(Order = 1)]
