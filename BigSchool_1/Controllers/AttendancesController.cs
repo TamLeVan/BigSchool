@@ -17,15 +17,17 @@ namespace BigSchool_1.Controllers
         public AttendancesController()
         {
             _dbContext = new ApplicationDbContext();
-            //Test commit
+        
         }
 
         [HttpPost]
         public IHttpActionResult Attend(AttendanceDto attendanceDto)
         {
             var userId = User.Identity.GetUserId();
-            if (_dbContext.Attendances.Any(a => a.AttendeeId == userId && a.CourseId == attendanceDto.CourseId))
+
+            if(_dbContext.Attendances.Any(a => a.AttendeeId == userId && a.CourseId == attendanceDto.CourseId))
                 return BadRequest("The Attendance already exist!");
+
             var attendance = new Attendance
             {
                 CourseId = attendanceDto.CourseId,

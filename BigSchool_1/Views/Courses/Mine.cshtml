@@ -10,23 +10,49 @@
     {
         <li>
             <div class="date">
-                <div class="month">
+                <div class="month" style="color :black">
                     @course.DateTime.ToString("MM")
                 </div>
-                <div class="day">
+                <div class="day" style="color :black">
                     @course.DateTime.ToString("dd")
                 </div>
             </div>
            
             <div class="details">
-                <span class="lecturer">@course.Lecturer.Name</span>
-                <span class="category">@course.Category.Name</span>
+                <span class="lecturer" >@course.Lecturer.Name</span>
+                <span class="category" >@course.Category.Name</span>
             </div>
             <div class="action">
-                <a href="@Url.Action("Edit", "Courses" , new { id = course.Id })" style="color:blue ">Edit</a>
-                <a href="" style="color:blue ">Delete</a>
+                <a href="@Url.Action("Edit", "Courses" , new { id = course.Id })" style="color:blue ">Sửa | </a>
+                <a href="#" class="js-cancel-course" data-course-id="@course.Id"  style="color:blue "> Xóa </a>   
             </div>
         </li>
     }
 </ul>
-
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-cancel-course").click(function (e) {
+                e.preventDefault();
+                var link = $(e.target);
+                bootbox.confirm("Bạn có muốn xóa không ? ",
+                    function () {
+                        $.ajax({
+                            url: "/api/courses/" + link.attr("data-course-id"),
+                            method: "DELETE"
+                        })
+                            .done(function () {
+                                link.parents("li").fadeOut(function () {
+                                    $(this).remove();
+                                });
+                            })
+                            .fail(function () {
+                                alert("Đã xảy ra lỗi !");
+                            });
+                    });
+            });
+        });
+      
+    </script> 
+}

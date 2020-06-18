@@ -8,10 +8,6 @@ namespace BigSchool_1.ViewModels
 {
     public class CourseViewModel
     {
-
-        
-
-
         public IEnumerable<Course> UpcomingCourses { get; set; }
         public bool ShowAction { get; set; }
 
@@ -38,4 +34,4 @@ namespace BigSchool_1.ViewModels
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
         }
     }
-}
+}   

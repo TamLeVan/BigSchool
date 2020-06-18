@@ -3,39 +3,36 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
-    <ul>
+    <ul class="course">
         @foreach(var course in Model.UpcomingCourses)
         {
             <li style="list-style: none">
                 <div class="date">
-                    <div class="month"style="background-color: aqua; width: 60px; text-align: center; color:black; border-radius: 8px">@course.DateTime.ToString("MM")</div>
-                    <div class="day" style="background-color: aqua; width: 60px; text-align: center; color:black; border-radius: 8px">@course.DateTime.ToString("dd")</div>
+                    <div class="month"style="background-color: aqua; width: 60px; text-align: center; color:black; border-radius: 8px; margin-top:10px">@course.DateTime.ToString("MM")</div>
+                    <div class="day" style="background-color: aqua; width: 60px; text-align: center; color:black; border-radius: 8px; margin-top: 10px">@course.DateTime.ToString("dd")</div>
                 </div>
                 <div class="details">
-
-                    <span class="lectuner" style="color : red">
-                        @course.Lecturer.Name
+                    <span class="lectuner"  style="color : red; margin-top: 10px" >
+                        @course.Lecturer.Name 
                         @if (Model.ShowAction)
                         {
-                            <button class="btn btn-default btn-sm js-toggle-follow data-user-id=@course.LecturerId">Follow</button>
+                        <button class="btn btn-default btn-sm js-toggle-follow data-user-id=@course.LecturerId" style="margin-top:10px!important">Theo dõi</button>
                         }
-
                     </span>
-                    <span class="category" style="color : red">
-                        @course.Category.Name
-                    </span>
+                    <span class="category" style="color : red; margin-top: 10px">
+                        @course.Category.Name                
                     @if (Model.ShowAction)
                     {
-                        <button data-source-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Đăng ký?</button>
+                        <button data-source-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Đăng ký ?</button>
                     }
+                    </span>
                 </div>
             </li>           
-        }
+        }d
     </ul>
-</div>
 
-@section scripts
+
+@section  scripts
 {
     <script>
         $(document).ready(function () {
@@ -49,21 +46,21 @@
                         .text("Đã đăng ký");
                 })
                 .fail(function (){
-                            alert("something wrong!");
+                     alert("something wrong!");
                  });
          });
-});
+
         $(".js-toggle-follow").click(function (e) {
             var button = $(e.target);
             $.post("api/followings", { followeeId: button.attr("data-user-id") })
                 .done(function () {
-                    button.text("Theo dõi");
+                    button.text("Đã theo dõi");
                 })
                 .fail(function () {
                     alert("Some thing wrong!");
-                })
-        }
+                });
         });
+    });
     </script>
 }
 

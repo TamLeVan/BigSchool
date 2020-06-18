@@ -16,18 +16,13 @@
                 <div class="details">
                     <span class="lectuner" style="color : red">
                         @course.Lecturer.Name
-                        @if (Model.ShowAction)
-                        {
-                            <button class="btn btn-default btn-sm js-toggle-follow data-user-id=@course.LecturerId">Follow</button>
-                        }
                     </span>
+                    <button class="btn btn-default btn-sm js-toggle-follow data-user-id=@course.LecturerId">Follow</button>
+                   
                     <span class="category" style="color : red">
                         @course.Category.Name
                     </span>
-                    @if (Model.ShowAction)
-                    {
-                        <button data-source-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
-                    }
+                    <button data-source-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>                          
                 </div>
             </li>
         }
@@ -37,7 +32,7 @@
 {
     <script>
         $(document).ready(function () {
-            $(".js-toggle-attendance").click(function (e) {
+            $(".js-toggle-attendance").click(function () {
                 var button = $(e.target);
                 $.post("/api/attendances", { courseId: button.attr("data-course-id") })
                     .done(function () {
@@ -54,13 +49,13 @@
                 var button = $(e.target);
                 $.post("api/followings", { followeeId: button.attr("data-user-id") })
                     .done(function () {
-                        button.text("Theo dõi");
+                        button.text("Đang theo dõi");
                     })
                     .fail(function () {
                         alert("Some thing wrong!");
-                    })
-            }
+                    });
             });
+    });
     </script>
 }
 

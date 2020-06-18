@@ -7,11 +7,11 @@ using System.ComponentModel.DataAnnotations;
 namespace BigSchool_1.Models
 {
     public class Course
-    {
-        
+    {        
         public int Id { get; set; }
 
-        public bool Iscanceled { get; set; }
+        public bool Iscanceled { get; set; }        // bổ sung - update 
+
         public ApplicationUser Lecturer { get; set; }
         [Required]
         public string LecturerId { get; set; }

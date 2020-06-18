@@ -1,13 +1,6 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
-   
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-bottom: 20px; 
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -24,6 +17,15 @@ textarea {
     max-width: 280px;
 }
 
+.body-content {
+    background-color: white;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 .course {
     list-style: none;
 }
@@ -33,11 +35,13 @@ textarea {
 }
  .course > li .date {
      text-align : center;
-     background-color:brown;
-     color : black;
+     background-color : white;
+     color: white;
      width: 60px;
      border-radius : 9px;
-    }
+     margin-top: 10px;
+     margin-bottom:10px;
+ }
 
  .course > li .details {
      position : absolute;
@@ -45,3 +49,8 @@ textarea {
      left : 70px;
  }
 
+.course > li .details .lectuner
+{
+    text-align:center;
+    margin-top: 10px;
+}

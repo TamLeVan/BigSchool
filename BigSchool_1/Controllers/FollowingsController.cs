@@ -8,10 +8,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using System.Globalization;
+
+using System.Net;
+
 
 namespace BigSchool_1.Controllers
 {
@@ -23,11 +22,10 @@ namespace BigSchool_1.Controllers
         {
             _dbContext = new ApplicationDbContext();
         }
-
         // GET: Followings
-       
+        
 
-      //  [HttpPost]
+        [HttpPost]
         public IHttpActionResult Follow(FollowingDto followingDto)
         {
             var userId = User.Identity.GetUserId();
@@ -46,4 +44,4 @@ namespace BigSchool_1.Controllers
             return Ok();
         }
     }
-}
+}   
